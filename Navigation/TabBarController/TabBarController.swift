@@ -38,7 +38,7 @@ class TabBarController: UITabBarController {
         lineTabNavigationController.tabBarItem = item1
         infoTabNavigationController.tabBarItem = item2
         
-        UITabBar.appearance().tintColor = UIColor(red: 225/255.0, green: 225/255.0, blue: 225/255.0, alpha: 1.0)
+        UITabBar.appearance().tintColor = UIColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0)
         UITabBar.appearance().backgroundColor = .gray
         
         

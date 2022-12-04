@@ -9,9 +9,20 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
+    
+    // MARK: - Life cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .blue
-        //code
+        setupView()
     }
+    
+    
+    // MARK: - Methods
+    
+    private func setupView() {
+        self.view.backgroundColor = .red
+    }
+
 }
+
