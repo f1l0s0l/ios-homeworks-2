@@ -17,7 +17,7 @@ class FeedViewController: UIViewController {
         let button = UIButton()
         button.setTitle("Post", for: .normal)
         button.setTitleColor(UIColor.black, for: .normal)
-        button.backgroundColor = .gray
+        button.backgroundColor = .white
         button.layer.cornerRadius = 14
         return button
     }()
@@ -32,12 +32,15 @@ class FeedViewController: UIViewController {
         //code
     }
     
-    
+ 
     // MARK: - Methods
     
     private func setupView() {
-        self.view.backgroundColor = .white
+        self.view.backgroundColor = .gray
         self.title = "Feed"
+//        UINavigationBar.appearance().tintColor = UIColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0)
+//        UINavigationBar.appearance().backgroundColor = .orange
+     
     }
     
     func setupButton() {
