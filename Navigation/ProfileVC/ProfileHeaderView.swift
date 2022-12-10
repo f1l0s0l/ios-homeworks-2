@@ -9,7 +9,10 @@ import UIKit
 
 class ProfileHeaderView: UIView {
     
-   
+    // MARK: - Properties
+    
+    private var statusText: String = "Любимая доча"
+    
     
     // MARK: - Life cycle
     
@@ -32,7 +35,10 @@ class ProfileHeaderView: UIView {
         addSubview(buttonShowStatus)
         addSubview(userStatus)
         buttonShowStatus.addTarget(self, action: #selector(tapOnButtonShowStatus), for: .touchUpInside)
-//        addGestures()
+        //Добавил прстую аниманию нажатия на кнопку
+        buttonShowStatus.addTarget(self, action: #selector(tapDownButtonShowStatus), for: .touchDown)
+        addSubview(changeUserStatus)
+        changeUserStatus.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
         setupConstraint()
     }
     
@@ -50,7 +56,7 @@ class ProfileHeaderView: UIView {
     
     let userName: UILabel = {
         let label = UILabel()
-        label.text = "Ария Ильинична"
+        label.text = "Ария"
         label.textAlignment = .center
         label.textColor = .black
         label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
@@ -79,6 +85,18 @@ class ProfileHeaderView: UIView {
         return label
     }()
     
+    let changeUserStatus: TextFieldWithPadding = {
+        let text = TextFieldWithPadding()
+        text.backgroundColor = .white
+        text.text = "Любимая доча"
+        text.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+        text.textColor = .black
+        text.layer.cornerRadius = 12
+        text.textPadding.left = 7
+        return text
+    }()
+    
+    
     
     // MARK: - Constraint
     
@@ -103,7 +121,7 @@ class ProfileHeaderView: UIView {
         
         buttonShowStatus.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            buttonShowStatus.topAnchor.constraint(equalTo: self.userPhoto.bottomAnchor, constant: 16),
+            buttonShowStatus.topAnchor.constraint(equalTo: self.userPhoto.bottomAnchor, constant: 31), //было значение 16
             buttonShowStatus.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16),
             buttonShowStatus.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16),
             buttonShowStatus.heightAnchor.constraint(equalToConstant: 50)
@@ -111,31 +129,41 @@ class ProfileHeaderView: UIView {
         
         userStatus.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            userStatus.bottomAnchor.constraint(equalTo: self.buttonShowStatus.topAnchor, constant: -34),
+            userStatus.bottomAnchor.constraint(equalTo: self.buttonShowStatus.topAnchor, constant: -59), // было значение -34
             userStatus.heightAnchor.constraint(equalToConstant: 14),
-            userStatus.centerXAnchor.constraint(equalTo: self.centerXAnchor)
+            userStatus.leftAnchor.constraint(equalTo: self.userName.leftAnchor, constant: 0)
+//            userStatus.centerXAnchor.constraint(equalTo: self.centerXAnchor)
         ])
+        
+        changeUserStatus.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            changeUserStatus.topAnchor.constraint(equalTo: self.userStatus.bottomAnchor, constant: 10),
+            changeUserStatus.leftAnchor.constraint(equalTo: self.userStatus.leftAnchor, constant: 0),
+            changeUserStatus.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16),
+            changeUserStatus.heightAnchor.constraint(equalToConstant: 40)
+        ])
+        
     }
     
-    // MARK: - Tap
     
-//    func addGestures() {
-//        let gestureButtonShowStatus = UITapGestureRecognizer(target: self, action: #selector(tapOnButtonShowStatus))
-//        buttonShowStatus.isUserInteractionEnabled = true
-//        buttonShowStatus.addGestureRecognizer(gestureButtonShowStatus)
-//    }
-    
+    //Тут я добавил простую анимацию нажатия на кнопку
     @objc
     func tapOnButtonShowStatus() {
+        buttonShowStatus.alpha = 1
+        userStatus.text = statusText
         print(userStatus.text ?? "Нет статуса")
+        //Добавил закрытие клавиатуры по нажатию на эту кнопку
+        self.endEditing(true)
     }
     
+    @objc
+    func tapDownButtonShowStatus() {
+        buttonShowStatus.alpha = 0.6
+    }
     
-
-    
-    
-
-
-    
+    @objc
+    func statusTextChanged(_ textField: UITextField){
+        statusText = textField.text ?? statusText
+    }
     
 }
