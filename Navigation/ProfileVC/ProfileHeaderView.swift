@@ -31,6 +31,8 @@ class ProfileHeaderView: UIView {
         addSubview(userName)
         addSubview(buttonShowStatus)
         addSubview(userStatus)
+        buttonShowStatus.addTarget(self, action: #selector(tapOnButtonShowStatus), for: .touchUpInside)
+//        addGestures()
         setupConstraint()
     }
     
@@ -113,13 +115,20 @@ class ProfileHeaderView: UIView {
             userStatus.heightAnchor.constraint(equalToConstant: 14),
             userStatus.centerXAnchor.constraint(equalTo: self.centerXAnchor)
         ])
-        
-        // UIView items
-        //Code
-        // UIView items
-        //Code
     }
     
+    // MARK: - Tap
+    
+//    func addGestures() {
+//        let gestureButtonShowStatus = UITapGestureRecognizer(target: self, action: #selector(tapOnButtonShowStatus))
+//        buttonShowStatus.isUserInteractionEnabled = true
+//        buttonShowStatus.addGestureRecognizer(gestureButtonShowStatus)
+//    }
+    
+    @objc
+    func tapOnButtonShowStatus() {
+        print(userStatus.text ?? "Нет статуса")
+    }
     
     
 
