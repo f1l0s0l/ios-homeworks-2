@@ -29,8 +29,8 @@ class ProfileHeaderView: UIView {
     private func setupViewItems() {
         addSubview(userPhoto)
         addSubview(userName)
-        
-        addSubview(buttomShowStatus)
+        addSubview(buttonShowStatus)
+        addSubview(userStatus)
         setupConstraint()
     }
     
@@ -42,34 +42,44 @@ class ProfileHeaderView: UIView {
         view.backgroundColor = .orange
         view.layer.borderWidth = 3
         view.layer.borderColor = UIColor.white.cgColor
-        view.layer.cornerRadius = 75
+        view.layer.cornerRadius = 55
         return view
     }()
     
     let userName: UILabel = {
         let label = UILabel()
-        label.text = "Доча"
+        label.text = "Ария Ильинична"
         label.textAlignment = .center
         label.textColor = .black
         label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         return label
     }()
-
+        
+    let buttonShowStatus: UIButton = {
+        let button = UIButton()
+        button.setTitle("Show status", for: .normal)
+        button.layer.cornerRadius = 14 //По заданию, должно быть 4! Но это не похоже на макет!!!
+        button.backgroundColor = .systemBlue
+        button.layer.shadowOffset.width = 4
+        button.layer.shadowOffset.height = 4
+        button.layer.shadowRadius = 4
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOpacity = 0.7
+        return button
+    }()
     
-    
-    
-    
-    let buttomShowStatus: UIButton = {
-        let buttom = UIButton()
-        buttom.setTitle("Show status", for: .normal)
-        buttom.layer.cornerRadius = 14 //По заданию, должно быть 4! Но это не похоже на макет!!!
-        buttom.backgroundColor = .systemBlue
-        return buttom
+    let userStatus: UILabel = {
+        let label = UILabel()
+        label.text = "Любимая доча"
+        label.textAlignment = .center
+        label.textColor = .gray
+        label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        return label
     }()
     
     
-    
     // MARK: - Constraint
+    
     
     func setupConstraint() {
         
@@ -77,9 +87,9 @@ class ProfileHeaderView: UIView {
         NSLayoutConstraint.activate([
             userPhoto.topAnchor.constraint(equalTo: self.topAnchor, constant: 16),
             userPhoto.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16),
-            userPhoto.widthAnchor.constraint(equalToConstant: 150),
-            userPhoto.heightAnchor.constraint(equalToConstant: 150)
-               ])
+            userPhoto.widthAnchor.constraint(equalToConstant: 110),
+            userPhoto.heightAnchor.constraint(equalToConstant: 110)
+        ])
         
         userName.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -87,14 +97,21 @@ class ProfileHeaderView: UIView {
             userName.heightAnchor.constraint(equalToConstant: 18),
             //Выравнивание по середине по координате X
             userName.centerXAnchor.constraint(equalTo: self.centerXAnchor)
-               ])
+        ])
         
-        buttomShowStatus.translatesAutoresizingMaskIntoConstraints = false
+        buttonShowStatus.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            buttomShowStatus.topAnchor.constraint(equalTo: self.userPhoto.bottomAnchor, constant: 16),
-            buttomShowStatus.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16),
-            buttomShowStatus.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16),
-            buttomShowStatus.heightAnchor.constraint(equalToConstant: 50)
+            buttonShowStatus.topAnchor.constraint(equalTo: self.userPhoto.bottomAnchor, constant: 16),
+            buttonShowStatus.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16),
+            buttonShowStatus.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16),
+            buttonShowStatus.heightAnchor.constraint(equalToConstant: 50)
+        ])
+        
+        userStatus.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            userStatus.bottomAnchor.constraint(equalTo: self.buttonShowStatus.topAnchor, constant: -34),
+            userStatus.heightAnchor.constraint(equalToConstant: 14),
+            userStatus.centerXAnchor.constraint(equalTo: self.centerXAnchor)
         ])
         
         // UIView items
