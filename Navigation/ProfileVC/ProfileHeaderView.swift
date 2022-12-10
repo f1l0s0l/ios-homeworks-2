@@ -38,6 +38,8 @@ class ProfileHeaderView: UIView {
         //Добавил прстую аниманию нажатия на кнопку
         buttonShowStatus.addTarget(self, action: #selector(tapDownButtonShowStatus), for: .touchDown)
         addSubview(changeUserStatus)
+        //Добавил изменение текста на кнопке в "Set status" согласно макету
+        changeUserStatus.addTarget(self, action: #selector(titleButtonShowStatusChange), for: .touchDown) //!!!!!!!!
         changeUserStatus.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
         setupConstraint()
     }
@@ -45,13 +47,15 @@ class ProfileHeaderView: UIView {
     
     // MARK: - UIView items
     
-    let userPhoto: UIView = {
-        let view = UIView()
-        view.backgroundColor = .orange
-        view.layer.borderWidth = 3
-        view.layer.borderColor = UIColor.white.cgColor
-        view.layer.cornerRadius = 55
-        return view
+    let userPhoto: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "IMG_4570")
+        imageView.clipsToBounds = true
+        imageView.backgroundColor = .orange
+        imageView.layer.borderWidth = 3
+        imageView.layer.borderColor = UIColor.white.cgColor
+        imageView.layer.cornerRadius = 55
+        return imageView
     }()
     
     let userName: UILabel = {
@@ -154,6 +158,8 @@ class ProfileHeaderView: UIView {
         print(userStatus.text ?? "Нет статуса")
         //Добавил закрытие клавиатуры по нажатию на эту кнопку
         self.endEditing(true)
+        buttonShowStatus.setTitle("Show status", for: .normal)
+        
     }
     
     @objc
@@ -164,6 +170,11 @@ class ProfileHeaderView: UIView {
     @objc
     func statusTextChanged(_ textField: UITextField){
         statusText = textField.text ?? statusText
+    }
+    //Добавил изменение текста на кнопке в "Set status" согласно макету
+    @objc
+    func titleButtonShowStatusChange(){
+        buttonShowStatus.setTitle("Set status", for: .normal)
     }
     
 }
