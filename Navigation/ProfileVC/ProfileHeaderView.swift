@@ -9,6 +9,8 @@ import UIKit
 
 class ProfileHeaderView: UIView {
     
+   
+    
     // MARK: - Life cycle
     
     override init(frame: CGRect) {
@@ -26,6 +28,9 @@ class ProfileHeaderView: UIView {
     
     private func setupViewItems() {
         addSubview(userPhoto)
+        addSubview(userName)
+        
+        addSubview(buttomShowStatus)
         setupConstraint()
     }
     
@@ -35,9 +40,34 @@ class ProfileHeaderView: UIView {
     let userPhoto: UIView = {
         let view = UIView()
         view.backgroundColor = .orange
+        view.layer.borderWidth = 3
+        view.layer.borderColor = UIColor.white.cgColor
+        view.layer.cornerRadius = 75
         return view
     }()
-    // let ...UIView items
+    
+    let userName: UILabel = {
+        let label = UILabel()
+        label.text = "Доча"
+        label.textAlignment = .center
+        label.textColor = .black
+        label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        return label
+    }()
+
+    
+    
+    
+    
+    let buttomShowStatus: UIButton = {
+        let buttom = UIButton()
+        buttom.setTitle("Show status", for: .normal)
+        buttom.layer.cornerRadius = 14 //По заданию, должно быть 4! Но это не похоже на макет!!!
+        buttom.backgroundColor = .systemBlue
+        return buttom
+    }()
+    
+    
     
     // MARK: - Constraint
     
@@ -45,11 +75,27 @@ class ProfileHeaderView: UIView {
         
         userPhoto.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-                   userPhoto.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 16),
-                   userPhoto.leftAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leftAnchor, constant: 16),
-                   userPhoto.widthAnchor.constraint(equalToConstant: 200),
-                   userPhoto.heightAnchor.constraint(equalToConstant: 200)
+            userPhoto.topAnchor.constraint(equalTo: self.topAnchor, constant: 16),
+            userPhoto.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16),
+            userPhoto.widthAnchor.constraint(equalToConstant: 150),
+            userPhoto.heightAnchor.constraint(equalToConstant: 150)
                ])
+        
+        userName.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            userName.topAnchor.constraint(equalTo: self.topAnchor, constant: 27),
+            userName.heightAnchor.constraint(equalToConstant: 18),
+            //Выравнивание по середине по координате X
+            userName.centerXAnchor.constraint(equalTo: self.centerXAnchor)
+               ])
+        
+        buttomShowStatus.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            buttomShowStatus.topAnchor.constraint(equalTo: self.userPhoto.bottomAnchor, constant: 16),
+            buttomShowStatus.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16),
+            buttomShowStatus.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16),
+            buttomShowStatus.heightAnchor.constraint(equalToConstant: 50)
+        ])
         
         // UIView items
         //Code
