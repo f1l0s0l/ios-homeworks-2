@@ -9,6 +9,18 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
+    // MARK: - UI items
+    
+    let profileHeaderView = ProfileHeaderView()
+    
+    let buttonNew: UIButton = {
+        let button = UIButton()
+        button.setTitle("New button", for: .normal)
+        button.backgroundColor = .systemBlue
+        return button
+    }()
+    
+    
     // MARK: - Life cycle
     
     override func viewDidLoad() {
@@ -19,18 +31,6 @@ class ProfileViewController: UIViewController {
         setupButtonNew()
         setupConstraints()
     }
-    
-    
-    // MARK: - UI item
-    
-    let profileHeaderView = ProfileHeaderView()
-    
-    let buttonNew: UIButton = {
-        let button = UIButton()
-        button.setTitle("New button", for: .normal)
-        button.backgroundColor = .systemBlue
-        return button
-    }()
     
     
     // MARK: - Methods
