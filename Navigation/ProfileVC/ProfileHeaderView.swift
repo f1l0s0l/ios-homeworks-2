@@ -105,7 +105,7 @@ class ProfileHeaderView: UIView {
     // MARK: - Constraint
     
     
-    func setupConstraint() {
+    private func setupConstraint() {
         
         userPhoto.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
