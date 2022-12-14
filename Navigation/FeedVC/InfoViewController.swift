@@ -41,7 +41,6 @@ class InfoViewController: UIViewController {
     func setupUI() {
         setupAlertConfiguration()
         setupButton()
-        setupConstraints()
     }
     
     
@@ -60,6 +59,7 @@ class InfoViewController: UIViewController {
     func setupButton() {
         button.addTarget(self, action: #selector(addTarget), for: .touchUpInside)
         button.frame = CGRect(x: 0, y: 100, width: UIScreen.main.bounds.width, height: 50)
+        view.addSubview(button)
         setupConstraints()
         
     }
@@ -68,14 +68,14 @@ class InfoViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
+    
+    // MARK: - Constraint
+
     func setupConstraints() {
-        view.addSubview(button)
-        
         NSLayoutConstraint.activate([
             button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             button.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
-        
     }
 
 }

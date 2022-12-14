@@ -9,7 +9,7 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
-    // MARK: - UI items
+    // MARK: - Properties
     
     let profileHeaderView = ProfileHeaderView()
     

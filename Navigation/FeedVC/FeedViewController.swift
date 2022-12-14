@@ -9,12 +9,13 @@ import UIKit
 
 class FeedViewController: UIViewController {
     
-    // MARK: - UI items
+    // MARK: - Properties
     
     var post = Post(title: "Title of this Post")
     
     private let stackView: UIStackView = {
         let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.spacing = 10
         stackView.alignment = .center
@@ -24,6 +25,7 @@ class FeedViewController: UIViewController {
     
     private let buttonFirst: UIButton = {
         let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("First post", for: .normal)
         button.setTitleColor(UIColor.black, for: .normal)
         button.backgroundColor = .lightGray
@@ -33,6 +35,7 @@ class FeedViewController: UIViewController {
     
     private let buttonSecond: UIButton = {
         let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Second post", for: .normal)
         button.setTitleColor(UIColor.black, for: .normal)
         button.backgroundColor = .lightGray
@@ -98,29 +101,21 @@ class FeedViewController: UIViewController {
     
     
     private func setupConstraints() {
-        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
         NSLayoutConstraint.activate([
             stackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 30),
             stackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -30),
-            stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-        ])
-        
-        buttonFirst.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
+            stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            
             buttonFirst.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 10),
             buttonFirst.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -10),
-            buttonFirst.heightAnchor.constraint(equalToConstant: 50)
-        ])
-        
-        buttonSecond.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
+            buttonFirst.heightAnchor.constraint(equalToConstant: 50),
+            
             buttonSecond.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 10),
             buttonSecond.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -10),
             buttonSecond.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
-    
-    
-    
+
     
 }
