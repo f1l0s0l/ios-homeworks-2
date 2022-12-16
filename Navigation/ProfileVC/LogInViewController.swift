@@ -39,17 +39,17 @@ class LogInViewController: UIViewController {
     private lazy var userEmailTextField: TextFieldWithPadding = {
         let textField = TextFieldWithPadding()
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.delegate = self
-        textField.placeholder = "Logginzdfsdfsdgfzxczxczxcxzczczxczxczxc"
-        textField.keyboardType = .emailAddress
-        textField.clearButtonMode = .whileEditing
-        textField.backgroundColor = .systemBlue
-        textField.textColor = .black
-        textField.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        textField.tintColor = .orange
-        textField.autocapitalizationType = .none
         textField.backgroundColor = .systemGray6
+        
+        textField.keyboardType = .emailAddress
+        textField.placeholder = "Email or phone"
+        textField.textColor = .black
+        textField.font = UIFont.systemFont(ofSize: 16, weight: .regular) // В макете указано normal Что это????
+//        textField.tintColor = accentColor  В макете указано, tintColor: accentColor, Что это значит и как выбрать это значение
+        textField.clearButtonMode = .whileEditing
+        textField.autocapitalizationType = .none
         textField.textPadding.left = 8
+        textField.delegate = self
         textField.tag = 0
         return textField
     }()
@@ -57,19 +57,19 @@ class LogInViewController: UIViewController {
     private lazy var userPasswordTextField: TextFieldWithPadding = {
         let textField = TextFieldWithPadding()
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.delegate = self
+        textField.backgroundColor = .systemGray6
         textField.layer.borderWidth = 0.5
         textField.layer.borderColor = UIColor.lightGray.cgColor
-        textField.placeholder = "Password"
+        
         textField.returnKeyType = .done
         textField.isSecureTextEntry = true
-        textField.backgroundColor = .systemBlue
+        textField.placeholder = "Password"
         textField.textColor = .black
         textField.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        textField.tintColor = .orange
+        //        textField.tintColor = accentColor  В макете указано, tintColor: accentColor, Что это значит и как выбрать это значение
         textField.autocapitalizationType = .none
-        textField.backgroundColor = .systemGray6
         textField.textPadding.left = 8
+        textField.delegate = self
         textField.tag = 1
         return textField
     }()
@@ -77,10 +77,11 @@ class LogInViewController: UIViewController {
     private lazy var logInButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.clipsToBounds = true
         button.setTitle("Log in", for: .normal)
         button.clipsToBounds = true
         button.setBackgroundImage(UIImage(named: "blue_pixel"), for: .normal)
-        button.setBackgroundImage(UIImage(named: "blue_pixelALPHA08"), for: .selected)
+        button.setBackgroundImage(UIImage(named: "blue_pixelALPHA08"), for: .selected)//По поводу этого был первый вопрос, который я отправил с работой
         button.setBackgroundImage(UIImage(named: "blue_pixelALPHA08"), for: .highlighted)
         button.setBackgroundImage(UIImage(named: "blue_pixelALPHA08"), for: .disabled)
         button.layer.cornerRadius = 10
@@ -94,6 +95,16 @@ class LogInViewController: UIViewController {
         setupViewController()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        NotificationCenter.default.addObserver(self, selector: #selector(didShowKeyboard(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(didHideKeyboard(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+//    deinit {
+//        NotificationCenter.default.removeObserver(self)
+//    }
+//    Что это такое? В коде с лекции это было, но нам не объясняли что это как работает
     
     // MARK: - Methods
 
@@ -111,11 +122,42 @@ class LogInViewController: UIViewController {
         self.stackView.addArrangedSubview(self.userEmailTextField)
         self.stackView.addArrangedSubview(self.userPasswordTextField)
         self.scrollView.addSubview(self.logInButton)
+        setupTapOnLogInButton()
     }
     
     private func setupGestures() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.forcedHidingKeyboard))
         self.view.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc
+    private func didShowKeyboard(_ notification: Notification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+
+            let keyboardHeight = keyboardFrame.cgRectValue.height
+            
+            let logInButtonBottomPointY = self.logInButton.frame.origin.y + self.logInButton.frame.height
+            let keyboardOriginY = self.scrollView.frame.height - keyboardHeight //!!!!!!
+//             В лекции говорилось считать originY клавиатуры так: От frame.height самой View, но так у меня выдает ошибку, он выдет что originY клавиатуры меньше чем originBottomY кнопки, (то есть клавиатура находиться нише чем кнопка, но это не так!!
+//             Если я считаю frame.height от scrollView то все получается
+//             Почему так происходит??
+            
+            let yOffset = keyboardOriginY < logInButtonBottomPointY ? logInButtonBottomPointY - keyboardOriginY + 20 : 0
+            
+            self.scrollView.contentOffset = CGPoint(x: 0, y: yOffset)
+            
+            print("🍋 \(keyboardOriginY), \(logInButtonBottomPointY)") //Это для проверки того, что написанно выше
+        }
+    }
+    
+    private func setupTapOnLogInButton() {
+        self.logInButton.addTarget(self, action: #selector(touchUpInsideOnLogInButton), for: .touchUpInside)
+    }
+
+    @objc
+    private func touchUpInsideOnLogInButton() {
+        let profileViewController = ProfileViewController()
+        navigationController?.pushViewController(profileViewController, animated: true)
     }
     
 
@@ -128,8 +170,8 @@ class LogInViewController: UIViewController {
             scrollView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
             scrollView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
             
-            logoImage.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 120),
-            logoImage.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            logoImage.topAnchor.constraint(equalTo: self.scrollView.topAnchor, constant: 120),
+            logoImage.centerXAnchor.constraint(equalTo: self.scrollView.centerXAnchor),
             logoImage.widthAnchor.constraint(equalToConstant: 100),
             logoImage.heightAnchor.constraint(equalToConstant: 100),
             
@@ -149,6 +191,12 @@ class LogInViewController: UIViewController {
     @objc
     private func forcedHidingKeyboard() {
         self.view.endEditing(true)
+        self.scrollView.setContentOffset(.zero, animated: true)
+    }
+    
+    @objc
+    private func didHideKeyboard(_ notification: Notification) {
+        self.forcedHidingKeyboard()
     }
     
 }
@@ -172,8 +220,7 @@ extension LogInViewController: UITextFieldDelegate {
 
 
 
-
-
+// Это относиться к первому вопросу!)
 
 //private let logInButton: UIButton = {
 //    var configuration = UIButton.Configuration.filled()
