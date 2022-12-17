@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileHeaderView: UIView {
+class ProfileHeaderView: UITableViewHeaderFooterView {
     
     // MARK: - Properties
     
@@ -76,11 +76,18 @@ class ProfileHeaderView: UIView {
  
     // MARK: - Life cycle
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    
+    override init(reuseIdentifier: String?) {
+        super.init(reuseIdentifier: reuseIdentifier)
         self.backgroundColor = .lightGray
         setupViewItems()
     }
+    
+//    override init(frame: CGRect) {
+//        super.init(frame: frame)
+//        self.backgroundColor = .lightGray
+//        setupViewItems()
+//    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

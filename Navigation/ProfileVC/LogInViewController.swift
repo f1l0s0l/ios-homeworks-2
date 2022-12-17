@@ -157,6 +157,7 @@ class LogInViewController: UIViewController {
     @objc
     private func touchUpInsideOnLogInButton() {
         let profileViewController = ProfileViewController()
+        profileViewController.title = "Hello"
         navigationController?.pushViewController(profileViewController, animated: true)
     }
     
