@@ -1,16 +1,11 @@
 //
-//  Post.swift
+//  TextFieldWithPadding.swift
 //  Navigation
 //
-//  Created by Илья Сидорик on 05.12.2022.
+//  Created by Илья Сидорик on 14.12.2022.
 //
 
 import UIKit
-
-struct Post {
-    var title: String
-}
-
 
 class TextFieldWithPadding: UITextField {
     var textPadding = UIEdgeInsets(
