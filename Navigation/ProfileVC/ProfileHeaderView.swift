@@ -78,13 +78,13 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
-        self.backgroundColor = .systemGray6
+//        self.backgroundColor = .systemGray6
         setupViewItems()
     }
     
 //    override init(frame: CGRect) {
 //        super.init(frame: frame)
-//        self.backgroundColor = .lightGray
+////        self.backgroundColor = .lightGray
 //        setupViewItems()
 //    }
     
@@ -96,18 +96,19 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     // MARK: - Methods
     
     private func setupViewItems() {
-        addSubview(userPhoto)
-        addSubview(userName)
-        addSubview(buttonShowStatus)
-        addSubview(userStatus)
-        buttonShowStatus.addTarget(self, action: #selector(tapOnButtonShowStatus), for: .touchUpInside)
+//        self.contentView.addSubview(<#T##view: UIView##UIView#>)
+        self.addSubview(userPhoto)
+        self.addSubview(userName)
+        self.addSubview(buttonShowStatus)
+        self.addSubview(userStatus)
+        self.buttonShowStatus.addTarget(self, action: #selector(tapOnButtonShowStatus), for: .touchUpInside)
         //Добавил прстую аниманию нажатия на кнопку
-        buttonShowStatus.addTarget(self, action: #selector(tapDownButtonShowStatus), for: .touchDown)
-        addSubview(changeUserStatus)
+        self.buttonShowStatus.addTarget(self, action: #selector(tapDownButtonShowStatus), for: .touchDown)
+        self.addSubview(changeUserStatus)
         //Добавил изменение текста на кнопке в "Set status" согласно макету
-        changeUserStatus.addTarget(self, action: #selector(titleButtonShowStatusChange), for: .touchDown) //!!!!!!!!
-        changeUserStatus.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
-        setupConstraint()
+        self.changeUserStatus.addTarget(self, action: #selector(titleButtonShowStatusChange), for: .touchDown) //!!!!!!!!
+        self.changeUserStatus.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
+        self.setupConstraint()
     }
     
     
@@ -156,6 +157,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
             buttonShowStatus.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16),
             buttonShowStatus.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16),
             buttonShowStatus.heightAnchor.constraint(equalToConstant: 50),
+//            buttonShowStatus.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -30),
             
             userStatus.bottomAnchor.constraint(equalTo: self.buttonShowStatus.topAnchor, constant: -59), // было значение -34
             userStatus.heightAnchor.constraint(equalToConstant: 14),
