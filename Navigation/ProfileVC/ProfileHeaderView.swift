@@ -13,9 +13,8 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     
    private var statusText = StatusText(text: "Любимая доча")
 
-//    private var statusText: String = "Любимая доча"
     
-    let userPhoto: UIImageView = {
+    private lazy var userPhoto: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(named: "IMG_4570")
@@ -27,7 +26,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         return imageView
     }()
     
-    let userName: UILabel = {
+    private lazy var userName: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Ария"
@@ -37,11 +36,11 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         return label
     }()
         
-    let buttonShowStatus: UIButton = {
+    private lazy var buttonShowStatus: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Show status", for: .normal)
-        button.layer.cornerRadius = 14 //По заданию, должно быть 4! Но это не похоже на макет!!!
+        button.layer.cornerRadius = 14
         button.backgroundColor = .systemBlue
         button.layer.shadowOffset.width = 4
         button.layer.shadowOffset.height = 4
@@ -51,7 +50,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         return button
     }()
     
-    let userStatus: UILabel = {
+    private lazy var userStatus: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Любимая доча"
@@ -61,7 +60,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         return label
     }()
     
-    let changeUserStatus: TextFieldWithPadding = {
+    private lazy var changeUserStatus: TextFieldWithPadding = {
         let text = TextFieldWithPadding()
         text.translatesAutoresizingMaskIntoConstraints = false
         text.backgroundColor = .white
@@ -79,7 +78,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
-        self.backgroundColor = .lightGray
+        self.backgroundColor = .systemGray6
         setupViewItems()
     }
     
@@ -165,7 +164,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
             changeUserStatus.topAnchor.constraint(equalTo: self.userStatus.bottomAnchor, constant: 10),
             changeUserStatus.leftAnchor.constraint(equalTo: self.userStatus.leftAnchor, constant: 0),
             changeUserStatus.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16),
-            changeUserStatus.heightAnchor.constraint(equalToConstant: 40)
+            changeUserStatus.heightAnchor.constraint(equalToConstant: 40),
         ])
     }
     

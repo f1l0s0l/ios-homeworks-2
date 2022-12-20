@@ -20,6 +20,8 @@
 		A48E6653293D398C00411C97 /* Post and StatusText.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48E6652293D398C00411C97 /* Post and StatusText.swift */; };
 		A48E6655293D474F00411C97 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48E6654293D474F00411C97 /* InfoViewController.swift */; };
 		A48E66572941EA3600411C97 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48E66562941EA3600411C97 /* ProfileHeaderView.swift */; };
+		A4C63AD02950A72C0049135F /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C63ACF2950A72C0049135F /* PostTableViewCell.swift */; };
+		A4C63AD22950B5F70049135F /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C63AD12950B5F70049135F /* PostView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		A48E6652293D398C00411C97 /* Post and StatusText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Post and StatusText.swift"; sourceTree = "<group>"; };
 		A48E6654293D474F00411C97 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		A48E66562941EA3600411C97 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		A4C63ACF2950A72C0049135F /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
+		A4C63AD12950B5F70049135F /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +119,7 @@
 				A449335B2949D75500CC94CA /* LogInViewController.swift */,
 				A433D21C293C824A0097BFEE /* ProfileViewController.swift */,
 				A48E66562941EA3600411C97 /* ProfileHeaderView.swift */,
+				A4C63ACF2950A72C0049135F /* PostTableViewCell.swift */,
 			);
 			path = ProfileVC;
 			sourceTree = "<group>";
@@ -124,6 +129,7 @@
 			children = (
 				A48E6652293D398C00411C97 /* Post and StatusText.swift */,
 				A44933592949D07100CC94CA /* TextFieldWithPadding.swift */,
+				A4C63AD12950B5F70049135F /* PostView.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -209,6 +215,8 @@
 				A449335A2949D07100CC94CA /* TextFieldWithPadding.swift in Sources */,
 				A48E6655293D474F00411C97 /* InfoViewController.swift in Sources */,
 				A433D202293C80F90097BFEE /* SceneDelegate.swift in Sources */,
+				A4C63AD22950B5F70049135F /* PostView.swift in Sources */,
+				A4C63AD02950A72C0049135F /* PostTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -44,7 +44,7 @@ class LogInViewController: UIViewController {
         textField.keyboardType = .emailAddress
         textField.placeholder = "Email or phone"
         textField.textColor = .black
-        textField.font = UIFont.systemFont(ofSize: 16, weight: .regular) // В макете указано normal Что это????
+        textField.font = UIFont.systemFont(ofSize: 16, weight: .regular) 
 //        textField.tintColor = accentColor  В макете указано, tintColor: accentColor, Что это значит и как выбрать это значение
         textField.clearButtonMode = .whileEditing
         textField.autocapitalizationType = .none
@@ -81,7 +81,7 @@ class LogInViewController: UIViewController {
         button.setTitle("Log in", for: .normal)
         button.clipsToBounds = true
         button.setBackgroundImage(UIImage(named: "blue_pixel"), for: .normal)
-        button.setBackgroundImage(UIImage(named: "blue_pixelALPHA08"), for: .selected)//По поводу этого был первый вопрос, который я отправил с работой
+        button.setBackgroundImage(UIImage(named: "blue_pixelALPHA08"), for: .selected)
         button.setBackgroundImage(UIImage(named: "blue_pixelALPHA08"), for: .highlighted)
         button.setBackgroundImage(UIImage(named: "blue_pixelALPHA08"), for: .disabled)
         button.layer.cornerRadius = 10
@@ -101,10 +101,6 @@ class LogInViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(didHideKeyboard(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-//    deinit {
-//        NotificationCenter.default.removeObserver(self)
-//    }
-//    Что это такое? В коде с лекции это было, но нам не объясняли что это как работает
     
     // MARK: - Methods
 
@@ -138,15 +134,12 @@ class LogInViewController: UIViewController {
             
             let logInButtonBottomPointY = self.logInButton.frame.origin.y + self.logInButton.frame.height
             let keyboardOriginY = self.scrollView.frame.height - keyboardHeight //!!!!!!
-//             В лекции говорилось считать originY клавиатуры так: От frame.height самой View, но так у меня выдает ошибку, он выдет что originY клавиатуры меньше чем originBottomY кнопки, (то есть клавиатура находиться нише чем кнопка, но это не так!!
-//             Если я считаю frame.height от scrollView то все получается
-//             Почему так происходит??
             
             let yOffset = keyboardOriginY < logInButtonBottomPointY ? logInButtonBottomPointY - keyboardOriginY + 20 : 0
             
             self.scrollView.contentOffset = CGPoint(x: 0, y: yOffset)
             
-            print("🍋 \(keyboardOriginY), \(logInButtonBottomPointY)") //Это для проверки того, что написанно выше
+            print("🍋 \(keyboardOriginY), \(logInButtonBottomPointY)")
         }
     }
     
@@ -214,41 +207,3 @@ extension LogInViewController: UITextFieldDelegate {
         return true
     }
 }
-
-
-
-
-
-
-
-// Это относиться к первому вопросу!)
-
-//private let logInButton: UIButton = {
-//    var configuration = UIButton.Configuration.filled()
-//    configuration.background.cornerRadius = 100
-////        configuration.background.image = UIImage(named: "IMG_4570")
-////        configuration.title = "Log in"
-////        configuration.baseForegroundColor = .white
-//    configuration.automaticallyUpdateForSelection = true
-//
-//    let handler: UIButton.ConfigurationUpdateHandler = { button in
-//        switch button.state {
-//        case .highlighted:
-//            button.alpha = 1
-//        case .normal:
-//            button.alpha = 1
-//        default:
-//            break
-//        }
-//
-//    }
-//
-//    let button = UIButton(configuration: configuration, primaryAction: nil)
-//    button.translatesAutoresizingMaskIntoConstraints = false
-//    button.configurationUpdateHandler = handler
-//    button.setTitleColor(UIColor.white, for: .normal)
-//    button.setTitle("Log in", for: .normal)
-////        button.alpha = 0.3
-////        button.clipsToBounds = true
-//    return button
-//}()
