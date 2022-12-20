@@ -96,7 +96,6 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     // MARK: - Methods
     
     private func setupViewItems() {
-//        self.contentView.addSubview(<#T##view: UIView##UIView#>)
         self.addSubview(userPhoto)
         self.addSubview(userName)
         self.addSubview(buttonShowStatus)
@@ -157,7 +156,6 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
             buttonShowStatus.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16),
             buttonShowStatus.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16),
             buttonShowStatus.heightAnchor.constraint(equalToConstant: 50),
-//            buttonShowStatus.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -30),
             
             userStatus.bottomAnchor.constraint(equalTo: self.buttonShowStatus.topAnchor, constant: -59), // было значение -34
             userStatus.heightAnchor.constraint(equalToConstant: 14),

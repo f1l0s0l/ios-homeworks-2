@@ -20,9 +20,9 @@ class ProfileViewController: UIViewController {
         
     private lazy var tableHeaderView: ProfileHeaderView = {
         let view = ProfileHeaderView()
-//        let backgroundView = UIView(frame: view.bounds)
-//        backgroundView.backgroundColor = UIColor.systemGray6
-//        view.backgroundView = backgroundView
+        let backgroundView = UIView(frame: view.bounds)
+        backgroundView.backgroundColor = UIColor.systemGray6
+        view.backgroundView = backgroundView
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -33,10 +33,10 @@ class ProfileViewController: UIViewController {
         tableView.tableHeaderView = tableHeaderView
         tableView.estimatedRowHeight = 44
         tableView.dataSource = self
-//        tableView.delegate = self
+        tableView.delegate = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "DefaultCellID")
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: "PostTableViewCellID")
-//        tableView.register(ProfileHeaderView.self, forHeaderFooterViewReuseIdentifier: "ProfileHeaderViewID")
+        tableView.register(ProfileHeaderView.self, forHeaderFooterViewReuseIdentifier: "ProfileHeaderViewID")
         return tableView
     }()
     
@@ -64,10 +64,10 @@ class ProfileViewController: UIViewController {
             tableView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
             tableView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
             
-            tableHeaderView.topAnchor.constraint(equalTo: self.tableView.topAnchor),
-            tableHeaderView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
-            tableHeaderView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
-            tableHeaderView.heightAnchor.constraint(equalToConstant: 220),
+//            tableHeaderView.topAnchor.constraint(equalTo: self.tableView.topAnchor),
+//            tableHeaderView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
+//            tableHeaderView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
+//            tableHeaderView.heightAnchor.constraint(equalToConstant: 220),
         ])
     }
     
@@ -95,23 +95,23 @@ extension ProfileViewController: UITableViewDataSource {
 }
 
 
-//extension ProfileViewController: UITableViewDelegate {
-//
-//
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//
-//        if let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "ProfileHeaderViewID") {
-//            let backgroundView = UIView(frame: headerView.bounds)
-//            backgroundView.backgroundColor = UIColor.systemGray6
-//            headerView.backgroundView = backgroundView
-//            return headerView
-//        }
-//        return nil
-//    }
-//
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return 220
-//    }
-//
-//
-//}
+extension ProfileViewController: UITableViewDelegate {
+
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+
+        if let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "ProfileHeaderViewID") {
+            let backgroundView = UIView(frame: headerView.bounds)
+            backgroundView.backgroundColor = UIColor.systemGray6
+            headerView.backgroundView = backgroundView
+            return headerView
+        }
+        return nil
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 220
+    }
+
+
+}
