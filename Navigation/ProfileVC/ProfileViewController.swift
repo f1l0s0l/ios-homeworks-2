@@ -37,6 +37,7 @@ class ProfileViewController: UIViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "DefaultCellID")
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: "PostTableViewCellID")
         tableView.register(ProfileHeaderView.self, forHeaderFooterViewReuseIdentifier: "ProfileHeaderViewID")
+        tableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: "PhotosTableViewCellID")
         return tableView
     }()
     
