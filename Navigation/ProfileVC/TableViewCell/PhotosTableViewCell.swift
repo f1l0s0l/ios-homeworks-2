@@ -32,6 +32,10 @@ class PhotosTableViewCell: UITableViewCell {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.backgroundColor = .red
+        imageView.clipsToBounds = true
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = 6
+        imageView.image = UIImage(named:  "logo")
         return imageView
     }()
     
@@ -39,6 +43,11 @@ class PhotosTableViewCell: UITableViewCell {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.backgroundColor = .red
+        imageView.clipsToBounds = true
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = 6
+        imageView.image = UIImage(named: "logo")
+
 
         return imageView
     }()
@@ -47,14 +56,24 @@ class PhotosTableViewCell: UITableViewCell {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.backgroundColor = .red
+        imageView.clipsToBounds = true
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = 6
+        imageView.image = UIImage(named: "logo")
+
 
         return imageView
     }()
     
-    private lazy var fourthPhotoImage: UILabel = {
-        let imageView = UILabel()
+    private lazy var fourthPhotoImage: UIImageView = {
+        let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.backgroundColor = .red
+        imageView.clipsToBounds = true
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = 6
+        imageView.image = UIImage(named: "logo")
+
 
         return imageView
     }()
@@ -76,13 +95,30 @@ class PhotosTableViewCell: UITableViewCell {
     // MARK: - Methods
     
     private func setupView() {
-        self.backgroundColor = .orange
+        self.backgroundColor = .white
         self.contentView.addSubview(titleLabel)
         self.contentView.addSubview(nextButton)
         self.contentView.addSubview(firstPhotoImage)
         self.contentView.addSubview(secondPhotoImage)
         self.contentView.addSubview(thirdPhotoImage)
         self.contentView.addSubview(fourthPhotoImage)
+    }
+    
+    func setup(withPhoto photos: [String]){
+        for (index, photo) in photos.enumerated() {
+            switch index {
+            case 0:
+                self.firstPhotoImage.image = UIImage(named: photo)
+            case 1:
+                self.secondPhotoImage.image = UIImage(named: photo)
+            case 2:
+                self.thirdPhotoImage.image = UIImage(named: photo)
+            case 3:
+                self.fourthPhotoImage.image = UIImage(named: photo)
+            default:
+                break
+            }
+        }
     }
     
     private func setupConstraints() {

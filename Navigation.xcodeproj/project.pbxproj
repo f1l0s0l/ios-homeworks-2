@@ -23,6 +23,9 @@
 		A4C63AD02950A72C0049135F /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C63ACF2950A72C0049135F /* PostTableViewCell.swift */; };
 		A4C63AD22950B5F70049135F /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C63AD12950B5F70049135F /* PostView.swift */; };
 		A4C63B102952D7920049135F /* PhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C63B0F2952D7920049135F /* PhotosTableViewCell.swift */; };
+		A4C63B122952E6F50049135F /* ArrayPhotos.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C63B112952E6F50049135F /* ArrayPhotos.swift */; };
+		A4C63B1429535F3F0049135F /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C63B1329535F3F0049135F /* PhotosViewController.swift */; };
+		A4C63B19295383860049135F /* PhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C63B18295383860049135F /* PhotosCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +47,9 @@
 		A4C63ACF2950A72C0049135F /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		A4C63AD12950B5F70049135F /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 		A4C63B0F2952D7920049135F /* PhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTableViewCell.swift; sourceTree = "<group>"; };
+		A4C63B112952E6F50049135F /* ArrayPhotos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayPhotos.swift; sourceTree = "<group>"; };
+		A4C63B1329535F3F0049135F /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
+		A4C63B18295383860049135F /* PhotosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,9 +126,9 @@
 			children = (
 				A449335B2949D75500CC94CA /* LogInViewController.swift */,
 				A433D21C293C824A0097BFEE /* ProfileViewController.swift */,
-				A48E66562941EA3600411C97 /* ProfileHeaderView.swift */,
-				A4C63ACF2950A72C0049135F /* PostTableViewCell.swift */,
-				A4C63B0F2952D7920049135F /* PhotosTableViewCell.swift */,
+				A4C63B1529536C090049135F /* TableViewCell */,
+				A4C63B1329535F3F0049135F /* PhotosViewController.swift */,
+				A4C63B18295383860049135F /* PhotosCollectionViewCell.swift */,
 			);
 			path = ProfileVC;
 			sourceTree = "<group>";
@@ -133,8 +139,19 @@
 				A48E6652293D398C00411C97 /* Post and StatusText.swift */,
 				A44933592949D07100CC94CA /* TextFieldWithPadding.swift */,
 				A4C63AD12950B5F70049135F /* PostView.swift */,
+				A4C63B112952E6F50049135F /* ArrayPhotos.swift */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		A4C63B1529536C090049135F /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				A48E66562941EA3600411C97 /* ProfileHeaderView.swift */,
+				A4C63B0F2952D7920049135F /* PhotosTableViewCell.swift */,
+				A4C63ACF2950A72C0049135F /* PostTableViewCell.swift */,
+			);
+			path = TableViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,13 +229,16 @@
 				A449335C2949D75500CC94CA /* LogInViewController.swift in Sources */,
 				A48E6653293D398C00411C97 /* Post and StatusText.swift in Sources */,
 				A433D200293C80F90097BFEE /* AppDelegate.swift in Sources */,
+				A4C63B1429535F3F0049135F /* PhotosViewController.swift in Sources */,
 				A48E66572941EA3600411C97 /* ProfileHeaderView.swift in Sources */,
 				A433D21D293C824A0097BFEE /* ProfileViewController.swift in Sources */,
 				A433D21F293C825F0097BFEE /* FeedViewController.swift in Sources */,
 				A4C63B102952D7920049135F /* PhotosTableViewCell.swift in Sources */,
 				A449335A2949D07100CC94CA /* TextFieldWithPadding.swift in Sources */,
+				A4C63B122952E6F50049135F /* ArrayPhotos.swift in Sources */,
 				A48E6655293D474F00411C97 /* InfoViewController.swift in Sources */,
 				A433D202293C80F90097BFEE /* SceneDelegate.swift in Sources */,
+				A4C63B19295383860049135F /* PhotosCollectionViewCell.swift in Sources */,
 				A4C63AD22950B5F70049135F /* PostView.swift in Sources */,
 				A4C63AD02950A72C0049135F /* PostTableViewCell.swift in Sources */,
 			);

@@ -17,8 +17,9 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     private lazy var userPhoto: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: "IMG_4570")
+        imageView.image = UIImage(named: "1")
         imageView.clipsToBounds = true
+        imageView.contentMode = .scaleAspectFill
         imageView.backgroundColor = .orange
         imageView.layer.borderWidth = 3
         imageView.layer.borderColor = UIColor.white.cgColor
