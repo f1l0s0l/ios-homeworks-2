@@ -26,6 +26,7 @@
 		A4C63B122952E6F50049135F /* ArrayPhotos.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C63B112952E6F50049135F /* ArrayPhotos.swift */; };
 		A4C63B1429535F3F0049135F /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C63B1329535F3F0049135F /* PhotosViewController.swift */; };
 		A4C63B19295383860049135F /* PhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C63B18295383860049135F /* PhotosCollectionViewCell.swift */; };
+		A4C63B1B2954DC6C0049135F /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C63B1A2954DC6C0049135F /* test.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		A4C63B112952E6F50049135F /* ArrayPhotos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayPhotos.swift; sourceTree = "<group>"; };
 		A4C63B1329535F3F0049135F /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
 		A4C63B18295383860049135F /* PhotosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewCell.swift; sourceTree = "<group>"; };
+		A4C63B1A2954DC6C0049135F /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +131,7 @@
 				A4C63B1529536C090049135F /* TableViewCell */,
 				A4C63B1329535F3F0049135F /* PhotosViewController.swift */,
 				A4C63B18295383860049135F /* PhotosCollectionViewCell.swift */,
+				A4C63B1A2954DC6C0049135F /* test.swift */,
 			);
 			path = ProfileVC;
 			sourceTree = "<group>";
@@ -237,6 +240,7 @@
 				A449335A2949D07100CC94CA /* TextFieldWithPadding.swift in Sources */,
 				A4C63B122952E6F50049135F /* ArrayPhotos.swift in Sources */,
 				A48E6655293D474F00411C97 /* InfoViewController.swift in Sources */,
+				A4C63B1B2954DC6C0049135F /* test.swift in Sources */,
 				A433D202293C80F90097BFEE /* SceneDelegate.swift in Sources */,
 				A4C63B19295383860049135F /* PhotosCollectionViewCell.swift in Sources */,
 				A4C63AD22950B5F70049135F /* PostView.swift in Sources */,

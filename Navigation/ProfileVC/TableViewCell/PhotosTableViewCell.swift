@@ -84,7 +84,7 @@ class PhotosTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.setupView()
-        self.setupConstraints()
+//        self.setupConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -96,12 +96,13 @@ class PhotosTableViewCell: UITableViewCell {
     
     private func setupView() {
         self.backgroundColor = .white
-        self.contentView.addSubview(titleLabel)
-        self.contentView.addSubview(nextButton)
-        self.contentView.addSubview(firstPhotoImage)
-        self.contentView.addSubview(secondPhotoImage)
-        self.contentView.addSubview(thirdPhotoImage)
-        self.contentView.addSubview(fourthPhotoImage)
+        self.addSubview(titleLabel)
+        self.addSubview(nextButton)
+        self.addSubview(firstPhotoImage)
+        self.addSubview(secondPhotoImage)
+        self.addSubview(thirdPhotoImage)
+        self.addSubview(fourthPhotoImage)
+        self.setupConstraints()
     }
     
     func setup(withPhoto photos: [String]){
@@ -123,17 +124,17 @@ class PhotosTableViewCell: UITableViewCell {
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 12),
-            titleLabel.leftAnchor.constraint(equalTo: self.contentView.leftAnchor, constant: 12),
+            titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 12),
+            titleLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 12),
             titleLabel.bottomAnchor.constraint(equalTo: self.firstPhotoImage.topAnchor, constant: -12),
             
             nextButton.centerYAnchor.constraint(equalTo: self.titleLabel.centerYAnchor),
-            nextButton.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -12),
+            nextButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -12),
             
-            firstPhotoImage.leftAnchor.constraint(equalTo: self.contentView.leftAnchor, constant: 12),
-            firstPhotoImage.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -12),
+            firstPhotoImage.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 12),
+            firstPhotoImage.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -12),
             firstPhotoImage.rightAnchor.constraint(equalTo: self.secondPhotoImage.leftAnchor, constant: -8),
-            firstPhotoImage.widthAnchor.constraint(equalToConstant: (self.contentView.bounds.width - 48) / 4),
+            firstPhotoImage.widthAnchor.constraint(equalToConstant: (self.bounds.width - 48) / 4),
             firstPhotoImage.heightAnchor.constraint(equalTo: self.firstPhotoImage.widthAnchor),
             
             secondPhotoImage.rightAnchor.constraint(equalTo: self.thirdPhotoImage.leftAnchor, constant: -8),
@@ -146,7 +147,7 @@ class PhotosTableViewCell: UITableViewCell {
             thirdPhotoImage.widthAnchor.constraint(equalTo: self.firstPhotoImage.widthAnchor),
             thirdPhotoImage.heightAnchor.constraint(equalTo: self.thirdPhotoImage.widthAnchor),
             
-            fourthPhotoImage.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -12),
+            fourthPhotoImage.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -12),
             fourthPhotoImage.centerYAnchor.constraint(equalTo: self.firstPhotoImage.centerYAnchor),
             fourthPhotoImage.widthAnchor.constraint(equalTo: self.firstPhotoImage.widthAnchor),
             fourthPhotoImage.heightAnchor.constraint(equalTo: self.fourthPhotoImage.widthAnchor),

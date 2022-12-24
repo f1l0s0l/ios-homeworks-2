@@ -19,26 +19,37 @@ class ProfileViewController: UIViewController {
     ]
         
     
+    private lazy var backView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .white
+        view.alpha = 0
+        return view
+    }()
+    
+    
+    
     
     private lazy var tableHeaderView: ProfileHeaderView = {
         let view = ProfileHeaderView()
-        let backgroundView = UIView(frame: view.bounds)
-        backgroundView.backgroundColor = UIColor.systemGray6
-        view.backgroundView = backgroundView
-        view.translatesAutoresizingMaskIntoConstraints = false
+//        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+    
+    
+    
+    
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.tableHeaderView = tableHeaderView
+//        tableView.tableHeaderView = tableHeaderView
         tableView.estimatedRowHeight = 44
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "DefaultCellID")
-        tableView.register(PostTableViewCell.self, forCellReuseIdentifier: "PostTableViewCellID")
         tableView.register(ProfileHeaderView.self, forHeaderFooterViewReuseIdentifier: "ProfileHeaderViewID")
+        tableView.register(PostTableViewCell.self, forCellReuseIdentifier: "PostTableViewCellID")
         tableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: "PhotosTableViewCellID")
         return tableView
     }()
@@ -59,6 +70,12 @@ class ProfileViewController: UIViewController {
         self.navigationController?.navigationBar.isHidden = true
         self.view.backgroundColor = .systemGray6
         self.view.addSubview(tableView)
+        self.view.addSubview(backView)
+    }
+    
+    
+    func setupBackViewAlpha() {
+        backView.alpha = 0.7
     }
     
     private func setupConstraints() {
@@ -67,10 +84,17 @@ class ProfileViewController: UIViewController {
             tableView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
             tableView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
             tableView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
+            
+            backView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
+            backView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
+            backView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
+            backView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
+            
         ])
     }
     
 }
+
 
 
 extension ProfileViewController: UITableViewDataSource {
@@ -119,22 +143,28 @@ extension ProfileViewController: UITableViewDelegate {
 
         if section == 0 {
             if let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "ProfileHeaderViewID") {
-                let backgroundView = UIView(frame: headerView.bounds)
+                // только так можно задавать фон header
+                let backgroundView = UIView(frame: headerView.frame)
                 backgroundView.backgroundColor = UIColor.systemGray6
                 headerView.backgroundView = backgroundView
+//                headerView.translatesAutoresizingMaskIntoConstraints = false
                 return headerView
             }
         }
-        
+
         return nil
     }
+    
+    
+    
+    
 
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 0 {
-            return 220
-        }
-        return 0
-    }
+//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        if section == 0 {
+//            return 400
+//        }
+//        return 0
+//    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -145,8 +175,6 @@ extension ProfileViewController: UITableViewDelegate {
         }
             
     }
-
-
     
-
+    
 }
