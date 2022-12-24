@@ -26,7 +26,8 @@ class TabBarController: UITabBarController {
     
     private func setupUI() {
         lineTabNavigationController = UINavigationController.init(rootViewController: FeedViewController())
-        infoTabNavigationController = UINavigationController.init(rootViewController: ProfileViewController())
+        infoTabNavigationController = UINavigationController.init(rootViewController: LogInViewController())
+        infoTabNavigationController.navigationBar.isHidden = true
         
         self.viewControllers = [lineTabNavigationController, infoTabNavigationController]
         

@@ -7,15 +7,14 @@
 
 import UIKit
 
-class ProfileHeaderView: UIView {
+class ProfileHeaderView: UITableViewHeaderFooterView {
     
     // MARK: - Properties
     
    private var statusText = StatusText(text: "Любимая доча")
 
-//    private var statusText: String = "Любимая доча"
     
-    let userPhoto: UIImageView = {
+    private lazy var userPhoto: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(named: "IMG_4570")
@@ -27,7 +26,7 @@ class ProfileHeaderView: UIView {
         return imageView
     }()
     
-    let userName: UILabel = {
+    private lazy var userName: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Ария"
@@ -37,11 +36,11 @@ class ProfileHeaderView: UIView {
         return label
     }()
         
-    let buttonShowStatus: UIButton = {
+    private lazy var buttonShowStatus: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Show status", for: .normal)
-        button.layer.cornerRadius = 14 //По заданию, должно быть 4! Но это не похоже на макет!!!
+        button.layer.cornerRadius = 14
         button.backgroundColor = .systemBlue
         button.layer.shadowOffset.width = 4
         button.layer.shadowOffset.height = 4
@@ -51,7 +50,7 @@ class ProfileHeaderView: UIView {
         return button
     }()
     
-    let userStatus: UILabel = {
+    private lazy var userStatus: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Любимая доча"
@@ -61,7 +60,7 @@ class ProfileHeaderView: UIView {
         return label
     }()
     
-    let changeUserStatus: TextFieldWithPadding = {
+    private lazy var changeUserStatus: TextFieldWithPadding = {
         let text = TextFieldWithPadding()
         text.translatesAutoresizingMaskIntoConstraints = false
         text.backgroundColor = .white
@@ -76,11 +75,18 @@ class ProfileHeaderView: UIView {
  
     // MARK: - Life cycle
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.backgroundColor = .lightGray
+    
+    override init(reuseIdentifier: String?) {
+        super.init(reuseIdentifier: reuseIdentifier)
+//        self.backgroundColor = .systemGray6
         setupViewItems()
     }
+    
+//    override init(frame: CGRect) {
+//        super.init(frame: frame)
+////        self.backgroundColor = .lightGray
+//        setupViewItems()
+//    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -90,18 +96,18 @@ class ProfileHeaderView: UIView {
     // MARK: - Methods
     
     private func setupViewItems() {
-        addSubview(userPhoto)
-        addSubview(userName)
-        addSubview(buttonShowStatus)
-        addSubview(userStatus)
-        buttonShowStatus.addTarget(self, action: #selector(tapOnButtonShowStatus), for: .touchUpInside)
+        self.addSubview(userPhoto)
+        self.addSubview(userName)
+        self.addSubview(buttonShowStatus)
+        self.addSubview(userStatus)
+        self.buttonShowStatus.addTarget(self, action: #selector(tapOnButtonShowStatus), for: .touchUpInside)
         //Добавил прстую аниманию нажатия на кнопку
-        buttonShowStatus.addTarget(self, action: #selector(tapDownButtonShowStatus), for: .touchDown)
-        addSubview(changeUserStatus)
+        self.buttonShowStatus.addTarget(self, action: #selector(tapDownButtonShowStatus), for: .touchDown)
+        self.addSubview(changeUserStatus)
         //Добавил изменение текста на кнопке в "Set status" согласно макету
-        changeUserStatus.addTarget(self, action: #selector(titleButtonShowStatusChange), for: .touchDown) //!!!!!!!!
-        changeUserStatus.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
-        setupConstraint()
+        self.changeUserStatus.addTarget(self, action: #selector(titleButtonShowStatusChange), for: .touchDown) //!!!!!!!!
+        self.changeUserStatus.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
+        self.setupConstraint()
     }
     
     
@@ -158,7 +164,7 @@ class ProfileHeaderView: UIView {
             changeUserStatus.topAnchor.constraint(equalTo: self.userStatus.bottomAnchor, constant: 10),
             changeUserStatus.leftAnchor.constraint(equalTo: self.userStatus.leftAnchor, constant: 0),
             changeUserStatus.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16),
-            changeUserStatus.heightAnchor.constraint(equalToConstant: 40)
+            changeUserStatus.heightAnchor.constraint(equalToConstant: 40),
         ])
     }
     
